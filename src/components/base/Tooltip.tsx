@@ -1,7 +1,7 @@
 import { useEffect, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import { useIsMobile } from '../../app/viewport.js'
-import { useAnchoredPosition, useDelayedOpen } from './anchored.js'
+import { useAnchoredPosition, useDelayedOpen, type Align } from './anchored.js'
 import styles from './Tooltip.module.css'
 
 export type TooltipPlacement = 'top' | 'bottom'
@@ -15,17 +15,20 @@ const ENTER_DELAY = 100
 export const Tooltip = ({
   content,
   placement = 'top',
+  align = 'center',
   children,
 }: {
   content: ReactNode
   placement?: TooltipPlacement
+  /** 相对触发元素的水平对齐；贴住右边缘的元素用 end，提示才不会溢出视口 */
+  align?: Align
   children: ReactNode
 }) => {
   const isMobile = useIsMobile()
   const { open, setOpen, schedule, cancel } = useDelayedOpen()
   const { anchorRef, floatingRef, position } = useAnchoredPosition<HTMLSpanElement, HTMLDivElement>(
     open,
-    { side: placement, align: 'center', measureFirstChild: true, measureKey: content }
+    { side: placement, align, measureFirstChild: true, measureKey: content }
   )
 
   useEffect(() => () => cancel(), [cancel])

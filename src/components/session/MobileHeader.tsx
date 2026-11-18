@@ -1,6 +1,7 @@
 import { IconMenuOutline20, IconNewChatOutline20 } from '../base/icons.js'
 import { useTranslate } from '../../i18n/index.js'
 import { newChat } from '../../services/chat/store.js'
+import { BalanceBadge } from '../balance/BalanceBadge.js'
 import { IconButton } from '../base/IconButton.js'
 import { openMobileSider } from '../sider/mobileSiderState.js'
 import styles from './MobileHeader.module.css'
@@ -17,17 +18,16 @@ export const MobileHeader = ({ title }: { title?: string }) => {
         aria-label={t('expandSiderbarButton')}
         onClick={openMobileSider}
       />
+      {title === undefined ? null : <div className={styles.title}>{title}</div>}
+      <BalanceBadge className={styles.balance} />
       {title === undefined ? null : (
-        <>
-          <div className={styles.title}>{title}</div>
-          <IconButton
-            size="xl"
-            tone="primary"
-            icon={<IconNewChatOutline20 />}
-            aria-label={t('newChat')}
-            onClick={newChat}
-          />
-        </>
+        <IconButton
+          size="xl"
+          tone="primary"
+          icon={<IconNewChatOutline20 />}
+          aria-label={t('newChat')}
+          onClick={newChat}
+        />
       )}
     </div>
   )

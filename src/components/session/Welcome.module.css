@@ -28,6 +28,15 @@
   color: var(--dsw-alias-label-primary);
 }
 
+/** 桌面端新对话没有顶栏，余额徽标固定在右上角 */
+.balanceSlot {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  z-index: 5;
+  display: flex;
+}
+
 @media (max-width: 439px) {
   .greeting {
     font-size: 20px;

@@ -288,6 +288,42 @@
   }
 }
 
+/** 账户余额：金额右对齐，与刷新按钮排在同一行 */
+.balanceValue {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 6px;
+}
+
+.balanceAmount {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--dsw-alias-label-primary);
+}
+
+.balanceTopUp {
+  color: var(--dsw-alias-brand-text);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/** 查询中：刷新图标持续旋转，提示请求还在进行 */
+.balanceSpinning svg {
+  animation: balanceSpin 1s linear infinite;
+}
+
+@keyframes balanceSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media not all and (min-width: 768px) {
   .dialog {
     align-self: flex-end;

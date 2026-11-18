@@ -249,6 +249,23 @@ export type FileObject = {
   mime_type: string
 }
 
+/** GET /user/balance 的单个币种余额；金额为十进制字符串，直接展示，不做数值换算 */
+export type BalanceInfo = {
+  currency: 'CNY' | 'USD'
+  /** 可用总额，等于赠送余额与充值余额之和 */
+  total_balance: string
+  /** 尚未过期的赠送余额 */
+  granted_balance: string
+  /** 充值余额 */
+  topped_up_balance: string
+}
+
+/** GET /user/balance 的响应；is_available 为 false 表示余额不足以继续调用接口 */
+export type UserBalance = {
+  is_available: boolean
+  balance_infos: BalanceInfo[]
+}
+
 /** 非 2xx 响应体；流中出现只含 error 的无名 data 帧时同样按此解析 */
 export type ApiErrorBody = {
   error: {

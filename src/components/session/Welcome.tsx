@@ -1,5 +1,6 @@
 import { useIsMobile } from '../../app/viewport.js'
 import { useTranslate } from '../../i18n/index.js'
+import { BalanceBadge } from '../balance/BalanceBadge.js'
 import { ChatInput } from '../chatInput/ChatInput.js'
 import { MobileHeader } from './MobileHeader.js'
 import styles from './Welcome.module.css'
@@ -11,6 +12,11 @@ export const Welcome = () => {
   return (
     <div className={styles.container}>
       {isMobile ? <MobileHeader /> : null}
+      {isMobile ? null : (
+        <div className={styles.balanceSlot}>
+          <BalanceBadge />
+        </div>
+      )}
       <div className={styles.welcome}>
         <div className={styles.greeting}>{t('welcomeMessageChat250808')}</div>
         <ChatInput sessionId={null} />

@@ -17,3 +17,9 @@
   font: var(--dsw-font-s-strong-14);
   color: var(--dsw-alias-label-primary);
 }
+
+/** 余额徽标靠右；欢迎页没有标题和新建按钮时也贴住右侧 */
+.balance {
+  margin-left: auto;
+  margin-right: 4px;
+}

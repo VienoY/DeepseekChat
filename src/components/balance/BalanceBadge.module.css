@@ -1,0 +1,59 @@
+/** 顶部余额徽标：胶囊形，金额右对齐，点击打开充值页 */
+.badge {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  box-sizing: border-box;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--dsw-alias-border-l2);
+  border-radius: 100px;
+  background-color: var(--dsw-alias-bg-base);
+  color: var(--dsw-alias-label-secondary);
+  font-size: 13px;
+  line-height: 20px;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  transition:
+    background-color var(--ds-transition-duration) var(--ds-ease-in-out),
+    border-color var(--ds-transition-duration) var(--ds-ease-in-out);
+
+  &:hover {
+    background-color: var(--dsw-alias-interactive-bg-hover);
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 2px var(--dsw-alias-button-primary-fill);
+  }
+}
+
+.amount {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+/** 余额不足：用错误色提醒，仍然可以点进充值页 */
+.alert {
+  color: var(--dsw-alias-state-error-primary);
+}
+
+/** 刷新失败但有旧值：金额照常显示，提示里说明失败原因 */
+.stale {
+  color: var(--dsw-alias-label-tertiary);
+}
+
+/** 查询中：金额变淡，避免看起来是实时值 */
+.loading .amount {
+  opacity: 0.55;
+}
+
+@media not all and (min-width: 768px) {
+  .badge {
+    height: 30px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+}
